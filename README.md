@@ -46,7 +46,7 @@ I found the YUV color space to have the best performance for identifying vehicle
 The next step is to train a classifier which will be used to identify vehicles within images. I chose to evaluate the performance of the following three classifiers: Linear Support Vector Machine, Logistic Regression Classifier, Multi-layer Perceptron
 Based on the above results I decided to move forward with the Multi-layer Perceptron as my classifier to identify vehicles in images and in the video stream. 
 
-
+#Step 5: Detect Vehicles in images
 
 To search for vehicles within images I chose to implement a sliding window approach where I looked at one slice of the image at a time and made predictions on the HOG features from that particular window. In order to minimize the search area and speed up the pipeline I only searched for cars in the lower half of the image. Additionally, my algorithm searches for vehicles in windows of multiple scales, with an 80% overlap, in order to identify vehicles which can be either near or far in the image and will appear to have different sizes.
 
