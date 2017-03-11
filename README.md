@@ -50,10 +50,6 @@ Based on the above results I decided to move forward with the Multi-layer Percep
 
 To search for vehicles within images I chose to implement a sliding window approach where I looked at one slice of the image at a time and made predictions on the HOG features from that particular window. In order to minimize the search area and speed up the pipeline I only searched for cars in the lower half of the image. Additionally, my algorithm searches for vehicles in windows of multiple scales, with an 80% overlap, in order to identify vehicles which can be either near or far in the image and will appear to have different sizes.
 
-In order to ensure a high confidence for my predictions and minimize the instance of false positives, I made use of the MLP classifier's method predict_proba which returns a probability score for each possible class. I chose to threshold my predictions by looking for windows which were classified as vehicle with a probability score higher than 0.99.
-
-The coordinates of windows which are classified as vehicle will be appended to a list called detected and after all windows are searched, I will use the draw_boxes function to draw the boxes in detected on to a blank mask image with the same dimensions as the input image.
-
 Next I use the OpenCV function cv2.findContours to find all of the objects in the mask image and once the contours are found I used the OpenCV function cv2.boundingRect on each contour to get the coordinates of the bounding rect for each vehicle.
 
 Finally, I create a copy of the original image, called result, on which I draw the bounding rectangles. Below you can see the process on an example image:
